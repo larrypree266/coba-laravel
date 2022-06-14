@@ -68,7 +68,7 @@ Route::get('posts/{slug}', function ($slug) {
         ],
         [
             "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
+            "slug" => "judul-post-kedua", 
             "author" => "July Bayann",
             "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores doloremque et molestiae ab tempora reiciendis dolor explicabo, harum atque esse."
         ],
