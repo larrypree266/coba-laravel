@@ -13,4 +13,9 @@ class Post extends Model
 
     // this is the opposite of fillable
     protected $guarded = ['id']; // every table can be filled other than id
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

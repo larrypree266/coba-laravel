@@ -3,6 +3,9 @@
 @section('container')
     <article>
         <h2>{{ $post->title }}</h2>
+        
+        <p>By. Reza Arya in <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>
+        
         {{-- this happens if there's an html or other language element inside the data --}}
         {!! $post->body !!}
         {{-- <h2>{{ $post['title'] }}</h2> --}}
