@@ -16,11 +16,16 @@ class PostController extends Controller
             "posts" => Post::all(),
         ]);
     }
-    public function show($slug)
+
+    // Since we're using collection, Post model doesn't contain a slug
+    // this is Route-model binding
+    public function show(Post $post)
+    // public function show($id)
     {
         return view('post', [
             "title" => "Single Post",
-            "post" => Post::find($slug),
+            "post" => $post,
+            // "post" => Post::find($id),
         ]);
     }
 }
