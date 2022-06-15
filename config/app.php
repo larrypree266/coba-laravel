@@ -1,5 +1,6 @@
 <?php
 
+// 10_Factory_and_faker
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -108,7 +109,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    // grabs from env file else defaults to en
+    'faker_locale' => env('FAKER_LOCALE', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
