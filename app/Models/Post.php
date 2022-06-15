@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-
-
 class Post
 {
     private static $blog_posts = [
@@ -26,10 +24,26 @@ class Post
             "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores doloremque et molestiae ab tempora reiciendis dolor explicabo, harum atque esse."
         ],
     ];
+
     public static function all()
     {
-        return self::$blog_posts;
+        return collect(self::$blog_posts);
+    }
+
+    public static function find($slug)
+    {
+        $posts = static::all();
+        return $posts->firstWhere('slug', $slug);
+        // $posts = self::blog_posts;
+        // $post = [];
+        // foreach ($posts as $p) {
+        //     if ($p["slug"] === $slug) {
+        //         $post = $p;
+        //     }  
+        // }
+        // return $post;
     }
 }
+
 //use self::$blog_posts <- if the variable is static
 //use this->$blog_posts <- if the variable is normal property
