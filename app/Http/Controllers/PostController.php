@@ -14,7 +14,8 @@ class PostController extends Controller
         // dd(request('search'));
         $posts = Post::latest();
 
-
+        // Query Scope
+        // it's actually for the model method
         if (request('search')) {
             $posts
                 ->where('title', 'like', '%' . request('search') . '%')
