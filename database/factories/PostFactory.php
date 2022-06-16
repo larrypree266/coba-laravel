@@ -18,10 +18,22 @@ class PostFactory extends Factory
     {
         return [
             // mt = make random number (min,max)
+            // The value is an array
             'title' => $this->faker->sentence(mt_rand(2, 8)),
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(),
-            'body' => $this->faker->paragraph(mt_rand(5, 20)),
+            // . = join (from php)
+            // implode <- join
+            // collect() <- turning array into collection (from laravel)
+            'body' => collect($this->faker->paragraphs(mt_rand(5, 20)))
+                // 'body' => '<p>'  . implode('</p><p>'), $this->faker->paragraph(mt_rand(5, 20)) . '<p></p>', 
+                ->map(fn ($p) => "<p>{$p}</p>")
+                ->implode(''),
+            // ->map(function ($p) {
+            //     return "<p>$p</p>"
+            // ->map(fn ($p) => "<p>{$p}</p>")
+            // ->implode(''),
+            // }),
             'user_id' => mt_rand(1, 3),
             'category_id' => mt_rand(1, 2),
         ];
