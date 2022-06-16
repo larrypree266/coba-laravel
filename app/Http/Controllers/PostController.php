@@ -13,20 +13,16 @@ class PostController extends Controller
     {
         return view('posts', [
             "title" => "All Posts",
-            "posts" => Post::latest()->get(),
-            // "posts" => Post::all(),
+            "posts" => Post::with('author', 'category')->latest()->get(),
         ]);
     }
 
-    // Since we're using collection, Post model doesn't contain a slug
-    // this is Route-model binding
     public function show(Post $post)
-    // public function show($id)
+
     {
         return view('post', [
             "title" => "Single Post",
             "post" => $post,
-            // "post" => Post::find($id),
         ]);
     }
 }
