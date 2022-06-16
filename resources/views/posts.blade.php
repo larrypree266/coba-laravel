@@ -6,6 +6,7 @@
     {{-- count how many of the assigned data(variable) --}}
     @if ($posts->count())
         <div class="card mb-3 text-center">
+
             <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top"
                 alt="{{ $posts[0]->category->name }}">
             <div class="card-body">
@@ -34,6 +35,10 @@
             @foreach ($posts->skip(1) as $post)
                 <div class="col-md-4 mb-3">
                     <div class="card">
+                        <div class="position-absolute px-3 py-2 text-white" style="background-color:rgba(0,0,0,0.7)">
+                            <a href="/posts/{{ $posts[0]->slug }}"
+                                class="text-white text-decoration-none">{{ $post->category->name }}</a>
+                        </div>
                         <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top"
                             alt="{{ $post->category->name }}">
                         <div class="card-body">
@@ -53,18 +58,4 @@
             @endforeach
         </div>
     </div>
-
-    @foreach ($posts->skip(1) as $post)
-        <article class="mb-5 border-bottom pb-4">
-            <h2> <a href="/posts/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a> </h2>
-            <p>By. <a href="/authors/{{ $post->author->username }}"
-                    class="text-decoration-none">{{ $post->author->name }}</a> in
-                <a href="/categories/{{ $post->category->slug }}"
-                    class="text-decoration-none">{{ $post->category->name }}</a>
-            </p>
-            <p>{{ $post->excerpt }}</p>
-            <a href="/posts/{{ $post->slug }}" class="text-decoration-none">Read more</a>
-
-        </article>
-    @endforeach
 @endsection
