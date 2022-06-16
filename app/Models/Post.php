@@ -17,6 +17,13 @@ class Post extends Model
     protected $guarded = ['id']; // every table can be filled other than id
     protected $with = ['category', 'author'];
 
+    public function scopeFilter($query, array $filters)
+    {
+        if (request('search')) {
+            return $query->where('title', 'like', '%' . request('search') . '%')->orWhere('body', 'like', '%' . request('search') . '%');
+        }
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
