@@ -11,18 +11,20 @@ class Post extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['title', 'excerpt', 'body'];
-
-    // this is the opposite of fillable
     protected $guarded = ['id']; // every table can be filled other than id
     protected $with = ['category', 'author'];
 
     public function scopeFilter($query, array $filters)
     {
-        if (isset($filters['search']) ? $filters['search'] : false) {
-            // if (request('search')) {
-            return $query->where('title', 'like', '%' . $filters('search') . '%')->orWhere('body', 'like', '%' . $filters('search') . '%');
-        }
+        // filter the search for the categories
+        // ?? = null coalescing operator from php
+        $query->when($filters['search'] ??  false, function ($query, $search) {
+            return $query
+                ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%');
+            // return $query->where('title', 'like', '%' . $filters('search') . '%')->orWhere('body', 'like', '%' . $filters('search') . '%');
+        });
+        // $query->when(isset($filters['search']) ? $filters['search'] : false)
     }
 
     public function category()
