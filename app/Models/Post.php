@@ -16,15 +16,18 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        // filter the search for the categories
-        // ?? = null coalescing operator from php
         $query->when($filters['search'] ??  false, function ($query, $search) {
             return $query
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('body', 'like', '%' . $search . '%');
-            // return $query->where('title', 'like', '%' . $filters('search') . '%')->orWhere('body', 'like', '%' . $filters('search') . '%');
+        }); // you can chain '->' 
+
+        $query->when($filters['category'] ?? false, function ($query, $category) {
+            return $query->whereHas('category', function ($query) use ($category) {
+                // return $query->whereHas('category', function ($query, $categoy) {
+                $query->where('slug', $category);
+            });
         });
-        // $query->when(isset($filters['search']) ? $filters['search'] : false)
     }
 
     public function category()
