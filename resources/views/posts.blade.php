@@ -28,7 +28,7 @@
                         class="text-decoration-none text-dark">{{ $posts[0]->title }} </a> </h3>
                 <p>
                     <small class="text-muted">
-                        By. <a href="/authors/{{ $posts[0]->author->username }}"
+                        By. <a href="/posts?author=/{{ $posts[0]->author->username }}"
                             class="text-decoration-none">{{ $posts[0]->author->name }}</a> in
                         <a href="/posts?category/{{ $posts[0]->category->slug }}"
                             class="text-decoration-none">{{ $posts[0]->category->name }}</a>
@@ -59,7 +59,7 @@
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p>
                                 <small class="text-muted">
-                                    By. <a href="/authors/{{ $post->author->username }}"
+                                    By. <a href="/posts?={{ $post->author->username }}"
                                         class="text-decoration-none">{{ $post->author->name }}</a>
                                     {{ $posts[0]->created_at->diffForHumans() }}
                                 </small>

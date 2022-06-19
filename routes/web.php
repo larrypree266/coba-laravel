@@ -57,6 +57,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
         'title' => "Post By Author : $author->name",
+        'active' => 'posts',
         // this merges user with posts
         'posts' => $author->posts->load(['category', 'author']),
     ]);

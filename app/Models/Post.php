@@ -16,18 +16,30 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
+        //using isset()
         $query->when($filters['search'] ??  false, function ($query, $search) {
             return $query
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('body', 'like', '%' . $search . '%');
         }); // you can chain '->' 
 
+        // using callback
         $query->when($filters['category'] ?? false, function ($query, $category) {
+            // return $query->whereHas('category', function ($query, $categoy) {
             return $query->whereHas('category', function ($query) use ($category) {
-                // return $query->whereHas('category', function ($query, $categoy) {
                 $query->where('slug', $category);
             });
         });
+
+        // using arrow function
+        // with arrow function you don't need to use 'user' keyword
+        $query->when(
+            $filter['author'] ?? false,
+            fn ($query, $author) => $query->whereHas(
+                'author',
+                fn ($query) => $query->where('username', $author)
+            )
+        );
     }
 
     public function category()
