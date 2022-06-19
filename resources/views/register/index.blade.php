@@ -21,7 +21,7 @@
                         <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
                             id="username" placeholder="Username" required value="{{ old('nama') }}">
                         <label for="username">Username</label>
-                        @error('name')
+                        @error('username')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -31,7 +31,7 @@
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             id="email" placeholder="name@example.com" required value="{{ old('nama') }}">
                         <label for="email">Email Address</label>
-                        @error('name')
+                        @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -39,10 +39,10 @@
                     </div>
                     <div class="form-floating">
                         <input type="password" name="password"
-                            class="form-control rounded-bottom @error('email') is-invalid @enderror" id="floatingPassword"
+                            class="form-control rounded-bottom @error('email') is-invalid @enderror" id="password"
                             placeholder="Password" required value="{{ old('nama') }}">
                         <label for="password">Password</label>
-                        @error('name')
+                        @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
