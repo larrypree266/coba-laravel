@@ -9,7 +9,7 @@
                     @csrf
                     <div class="form-floating">
                         <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror"
-                            id="name" placeholder="Name" required >
+                            id="name" placeholder="Name" required value="{{ old('nama') }}">
                         <label for="name">Name</label>
                         @error('name')
                             <div class="invalid-feedback">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-floating">
                         <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
-                            id="username" placeholder="Username" required>
+                            id="username" placeholder="Username" required value="{{ old('nama') }}">
                         <label for="username">Username</label>
                         @error('name')
                             <div class="invalid-feedback">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-floating">
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            id="email" placeholder="name@example.com" required>
+                            id="email" placeholder="name@example.com" required value="{{ old('nama') }}">
                         <label for="email">Email Address</label>
                         @error('name')
                             <div class="invalid-feedback">
@@ -40,7 +40,7 @@
                     <div class="form-floating">
                         <input type="password" name="password"
                             class="form-control rounded-bottom @error('email') is-invalid @enderror" id="floatingPassword"
-                            placeholder="Password" required>
+                            placeholder="Password" required value="{{ old('nama') }}">
                         <label for="password">Password</label>
                         @error('name')
                             <div class="invalid-feedback">
