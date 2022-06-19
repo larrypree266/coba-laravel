@@ -45,6 +45,8 @@ Route::get('/categories', function () {
 
     ]);
 });
+
+
 // Removed Author & Categories route since it's not needed anymore,
 // cus we handle those within the Post model PostController 
 // you can compare them cause it's literally the same
