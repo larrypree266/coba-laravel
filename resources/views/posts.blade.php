@@ -9,6 +9,9 @@
                 @if (request('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
+                @if (request('author'))
+                    <input type="hidden" name="author" value="{{ request('author') }}">
+                @endif
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search..." name="search"
                         value="{{ request('search') }}">
@@ -28,7 +31,7 @@
                         class="text-decoration-none text-dark">{{ $posts[0]->title }} </a> </h3>
                 <p>
                     <small class="text-muted">
-                        By. <a href="/posts?author=/{{ $posts[0]->author->username }}"
+                        By. <a href="/posts?author={{ $posts[0]->author->username }}"
                             class="text-decoration-none">{{ $posts[0]->author->name }}</a> in
                         <a href="/posts?category/{{ $posts[0]->category->slug }}"
                             class="text-decoration-none">{{ $posts[0]->category->name }}</a>

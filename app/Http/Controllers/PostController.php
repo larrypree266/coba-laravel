@@ -12,7 +12,6 @@ class PostController extends Controller
     public function index()
     {
         // dd(request('search'));
-        $posts = Post::latest();
 
         return view('posts', [
             "title" => "All Posts",
