@@ -45,20 +45,7 @@ Route::get('/categories', function () {
 
     ]);
 });
+// Removed Author & Categories route since it's not needed anymore,
+// cus we handle those within the Post model PostController 
+// you can compare them cause it's literally the same
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'title' => "Post by category : $category->name",
-        'posts' => $category->posts->load(['category', 'author']),
-        'active' => 'categories',
-    ]);
-});
-
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts', [
-        'title' => "Post By Author : $author->name",
-        'active' => 'posts',
-        // this merges user with posts
-        'posts' => $author->posts->load(['category', 'author']),
-    ]);
-});
