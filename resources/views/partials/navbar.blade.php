@@ -23,7 +23,8 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i>Login</a>
+                    <a href="/login {{ $active === 'login' ? 'active' : '' }}" class="nav-link"><i
+                            class="bi bi-box-arrow-in-right"></i>Login</a>
                 </li>
             </ul>
         </div>
