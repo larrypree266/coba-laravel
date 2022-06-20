@@ -31,15 +31,15 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/dashboard"><i
-                                        class="bi bi-layout-text-sidebar-reverse"></i>MyDashboard</a></li>
+                                        class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
                                 <form action="/logout" method="post">
-                                    @csrf 
+                                    @csrf
                                     <button type="submit" class="dropdown-item">
-                                        <i class="bi bi-box-arrow-right"></i>
+                                        <i class="bi bi-box-arrow-right"></i> Logout
                                     </button>
                                 </form>
                             </li>
@@ -47,8 +47,10 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a href="/login {{ $active === 'login' ? 'active' : '' }}" class="nav-link"><i
-                                class="bi bi-box-arrow-in-right"></i>Login</a>
+                        <a href="/login {{ $active === 'login' ? 'active' : '' }}" class="nav-link">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            Login
+                        </a>
                     </li>
                 @endauth
             </ul>
