@@ -47,10 +47,12 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+//make routes named to avoid Authenticate.php redirectTo() function
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/register', [RegisterController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('dashboard', [DashboardController::class, 'index']);
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
