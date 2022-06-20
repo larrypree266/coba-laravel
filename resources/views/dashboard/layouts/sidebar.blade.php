@@ -8,14 +8,11 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="#">
-                     <span data-feather="file" class="align-text-bottom"></span>
+                 <a class="nav-link" href="">
+                     <span data-feather="file-text" class="align-text-bottom"></span>
                      My Posts
                  </a>
              </li>
-
          </ul>
-
-
      </div>
  </nav>
