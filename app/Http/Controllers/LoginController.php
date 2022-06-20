@@ -27,10 +27,18 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
-
-        // withErrors()
         return back()->with('loginError', 'Login failed!');
+    }
 
-        // dd('berhasil login!');
+    /* you can use Request $request too  */
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
