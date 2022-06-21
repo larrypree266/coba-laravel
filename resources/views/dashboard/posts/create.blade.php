@@ -14,11 +14,7 @@
             </div>
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="Slug" class="form-control" id="slug">
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <input type="text" class="form-control" id="slug" name="slug" disabled readonly>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -28,10 +24,10 @@
         const title = document.querySelector('#title')
         const slug = document.querySelector('#slug')
 
-        title.addEventListener('change'function() {
+        title.addEventListener('change', function() {
             fetch('/dashboard/posts/checkSlug?title=' + title.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
-        })
+        });
     </script>
 @endsection
