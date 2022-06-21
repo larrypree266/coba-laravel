@@ -32,7 +32,7 @@
                                     class="align-text-bottom"></span></a>
                             <a href="" class="badge bg-warning"><span data-feather="edit"
                                     class="align-text-bottom"></span></a>
-                            <form action="/dashboard/posts" method="post" class="d-inline">
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span
